@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>ĐAM MÊ ỈA</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+ 
+  <link rel="stylesheet" href="css/style.css">
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="./js/date.js"></script>
+
+
+
+
+  <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/adddefecation/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/adddefecation/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/adddefecation/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/adddefecation/vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="/adddefecation/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/adddefecation/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/adddefecation/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="/adddefecation/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/adddefecation/css/util.css">
+        <link rel="stylesheet" type="text/css" href="/adddefecation/css/main.css">
+    <!--===============================================================================================-->
+
+
+
+
+
+</head>
+
+<body>
+  <style>
+    *{
+			word-break: keep-all;
+		}
+    #imageShit{
+      width: 100%;
+      height: 400px;
+      border-radius: 20px;
+      object-fit: contain;
+    }
+    .tbl-content{
+      height: 50vh;
+      text-align: center;
+    }
+    th{
+      font-size: 20px;
+    }
+    td{
+      font-size: 18px;
+    }
+    tr:hover td{
+      font-size: 19px;
+      transition: all 0.2s;
+      color: rgb(0, 0, 0);
+    }
+    tr:hover img{
+      transform: scale(1.15);
+      transition: all 0.5s;
+    }
+    #btnLogout{
+      width: 120px;
+      height: 30px;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      color: aqua;
+      background-color: black;
+      border-radius: 20px;
+    }
+    #btnLogout:hover{
+      transform: scale(1.1);
+      transition: all 0.2s;
+    }
+    #iframeAddDefecation{
+        width: 100vw;
+        height: 50vh;
+    }
+    /* body{
+      background-position: center;
+      background-image: url(https://preview.colorlib.com/theme/bootstrap/website-menu-03/images/xhero_1.jpg.pagespeed.ic.YaTupVrYTs.webp);
+      background: none;
+    } */
+      
+    
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section>
+  <!--for demo wrap-->
+  <div style="display: inline-block; margin-bottom: 25px;"><h1 id="userInfo"></h1><button onclick="localStorage.clear(); window.location.href = '../auth/login.html';" id="btnLogout">Đăng xuất</button></div>
+
+
+
+
+
+  <!-- menu  -->
+
+
+
+    <div class="menu">
+      <ul>
+        <a href="/home/home.html"><li id="choice-menu">Điểm Danh Ẻ</li></a>
+        <a href="/home/index.html"><li>Xem Thống Kê Ẻ</li></a>
+        <a href="/home/top.html"><li>TOP Ẻ NHIỀU NHẤT</li></a>
+      </ul>
+    </div>
+
+<style>
+  .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .menu ul li{
+    display: inline-block;
+    margin: 50px 20px;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: white;
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 30px;
+  }
+  .menu ul li:hover{
+    background: #007bff;
+    transform: scale(1.08);
+    transition: all 0.25s;
+  }
+  #choice-menu{
+    background: #007bff;
+  }
+</style>
+
+
+<!--  -->
+
+
+
+
+
+  <div class="limiter">
+    <div class="container-login100" style="background-image: url('/adddefecation/images/bg-01.jpg');">
+        <div class="wrap-login100 p-t-30 p-b-50">
+            <span class="login100-form-title p-b-41">
+                Điểm danh ỉa
+            </span>
+            <form id="form-defecation" class="login100-form validate-form p-b-33 p-t-5">
+
+                <div id="cc" class="wrap-input100 validate-input" data-validate = "Nhập nơi ỉa">
+                    <input class="input100" type="text" name="address" placeholder="Nhập nơi ỉa">
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Nhập màu cứt">
+                    <input class="input100" type="text" name="color" placeholder="Nhập màu cứt">
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div>
+
+                <div class="wrap-input100" data-validate = "Chọn ảnh cứt">
+                    <p style="text-align: center; font-size: 20px;">Lựa chọn ảnh/video cứt (không bắt buộc)</p>
+                    <input id="file" class="input100" type="file" name="file"> 
+                </div>
+                <div class="container-login100-form-btn m-t-32">
+                    <button id="btnAddDefecation" class="login100-form-btn">
+                        Điểm danh
+                    </button>
+                </div>
+                <div id="loading" class="dots-loading">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+            </form>
+             
+        </div>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+
+
+<style>
+
+
+    .wrap-login100{
+        width: 80vw;
+    }
+    .container-login100{
+        min-height: 50vh;
+    }
+    #countDefecation{
+        margin: 20px 0;
+    }
+
+</style>
+
+<style>
+
+  .dots-loading {
+              display: none;
+              justify-content: center;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%,-50%);
+            }
+  .dots-loading > div {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    background-color: #ccc;
+    margin: 0 1rem;
+    animation: dotLoading 1s forwards infinite linear;
+  }
+
+  .dots-loading > div:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .dots-loading > div:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .dots-loading > div:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes dotLoading {
+    to {
+      opacity: 0;
+    }
+  }
+        </style>
+
+
+
+
+  <h1 id="countDefecation"></h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th style="width:5%">ID</th>
+          <th style="width:20%">Nơi ỉa</th>
+          <th style="width:25%">Màu cứt</th>
+          <th style="width:20%">Thời gian ỉa</th>
+          <th style="width:40%">Ảnh/Video mô tả cứt chi tiết</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody id="dataTable">
+       
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- follow me template -->
+<div class="made-with-love">
+  Made with
+  <i>♥</i> by
+  <a target="_blank" href="https://codepen.io/nikhil8krishnan">Truong ngungok</a>
+</div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+    <script src="js/home.js"></script>
+
+
+
+
+
+
+    <!--===============================================================================================-->
+	<script src="/adddefecation/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/adddefecation/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/adddefecation/vendor/bootstrap/js/popper.js"></script>
+        <script src="/adddefecation/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/adddefecation/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/adddefecation/vendor/daterangepicker/moment.min.js"></script>
+        <script src="/adddefecation/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+        <script src="/adddefecation/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+        <script src="/adddefecation/js/main.js"></script>
+        
+</body>
+</html>

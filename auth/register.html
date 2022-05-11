@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<title>ĐAM MÊ ỈA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+	<style>
+		h3{
+			font-family: 'Courier New', Courier, monospace;
+			font-size: 21px;
+		}
+		*{
+			word-break: keep-all;
+		}
+	</style>
+
+	</head>
+	<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Đăng Ký App Thống Kê Ẻ</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Cậu chưa có tài khoản ư?</h3>
+		      	<form action="#" id="register-form" class="signin-form">
+                    <div class="form-group">
+                        <input type="text" name="fullName" class="form-control" placeholder="Họ Và Tên" required>
+                    </div>
+		      		<div class="form-group">
+		      			<input type="text" name="username"  class="form-control" placeholder="Username" required>
+		      		</div>
+	            <div class="form-group">
+	              <input id="password-field" name="password" type="password" class="form-control" placeholder="Password" required>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+                
+	            <div class="form-group">
+	            	<button id="btnRegister" type="submit" class="form-control btn btn-primary submit px-3">ĐĂNG KÝ</button>
+	            </div>
+	          </form>
+              <div class="form-group">
+				<button onclick="window.location.href='login.html'" type="submit" class="form-control">ĐĂNG NHẬP</button>
+			  </div>
+	          <p class="w-100 text-center">&mdash; Copyright TruongNguNgok &mdash;</p>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+	  const server= "https://66bf-8-219-3-31.ngrok.io";
+	  function checkValidate(message){
+		if(message!=undefined){
+			alert(message)
+		}
+	  }
+
+	if(localStorage.getItem("jwtToken")!=null){
+		window.location.href = '../home/home.html';
+	}
+    $('#btnRegister').click(function (e) {
+        e.preventDefault();
+        var data = {};
+        var formData = $('#register-form').serializeArray();
+        $.each(formData, function (i, v) {
+            data["" + v.name + ""] = v.value;
+        });
+        $.ajax({
+            url: (server+'/auth/register'),
+            type: "POST",
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                alert(result['message'])
+                window.location.href = '/auth/login.html';
+            },
+            error: function (xhr, status, error) {
+				var result = xhr.responseJSON;
+				checkValidate(result['message'])
+				checkValidate(result['fullName']);
+				checkValidate(result['username']);
+				checkValidate(result['password']);
+            }
+        });
+    });
+
+</script>
+	</body>
+</html>
+
