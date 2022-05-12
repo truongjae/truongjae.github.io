@@ -104,13 +104,13 @@ function addDefecation(){
             addDefecationImage(result);
         },
         error: function (xhr, status, error) {
-            if(status == "error")
-                addDefecationImage(null);
-            else{
-              var result = xhr.responseJSON;
-              checkValidate(result['message']);
-              window.location.href = 'home.html';
-            }   
+            document.getElementById("loading").style.display="none";
+             if(xhr.status == 400){
+                var result = xhr.responseJSON;
+                checkValidate(result['message']);
+             }
+             else
+                addDefecationImage(null);   
         }
     });
 });

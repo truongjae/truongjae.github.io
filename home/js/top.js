@@ -63,7 +63,10 @@ async function callAll() {
           res.forEach(element => {
             let htmlSegment = 
             `<tr>
-            <td style="width:5%">${top++}</td>
+            <td style="width:5%">${top++}`;
+            if(top>=1 && top<=4)
+              htmlSegment+='<i class="fas fa-poo"></i>';
+            htmlSegment+=`</td>
               <td style="width:20%">${element.user['username']}</td>
               <td style="width:25%">${element.user['fullName']}</td>
               <td style="width:20%">${element['count']}</td>
