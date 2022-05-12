@@ -147,7 +147,7 @@ async function callAll() {
               <td style="width:5%">${element['id']}</td>
               <td style="width:20%">${element['address']}</td>
               <td style="width:25%">${element['color']}</td>
-              <td style="width:20%">${dateFormat(new Date(element['createdDate']), "dddd, dd-mm-yyyy, HH:MM:ss")}</td>`;
+              <td style="width:20%">${dateFormat(addHours(1,new Date(element['createdDate'])), "dddd, dd-mm-yyyy, HH:MM:ss")}</td>`;
               
             if(element['fileType']==true)
                 htmlSegment+=`<td style="width:40%"><video style="width:100%" controls src="${element['linkImage']}"></video></td>
