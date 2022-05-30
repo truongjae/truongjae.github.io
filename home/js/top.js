@@ -1,4 +1,4 @@
-const server= "https://66bf-8-219-3-31.ngrok.io";
+const server= "https://aed7-8-219-3-31.ngrok.io";
 // const server = "http://localhost";
 function addHours(numOfHours, date = new Date()) {
     date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
